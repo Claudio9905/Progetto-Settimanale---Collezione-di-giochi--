@@ -50,20 +50,21 @@ public class GiochiDaTavolo extends CollezioniGiochi {
     }
 
     public static boolean elementoAggiunto(List<GiochiDaTavolo> giochiDaTavoloList, GiochiDaTavolo nuovoGiocoDaTavolo) {
-        giochiDaTavoloList.add(nuovoGiocoDaTavolo);
-        return true;
+        if(giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(nuovoGiocoDaTavolo.getIdGioco())).isParallel()) {
+            return false;
+        } else {
+            giochiDaTavoloList.add(nuovoGiocoDaTavolo);
+            return true;
+        }
     }
 
     public static void ricercaId(List<GiochiDaTavolo> giochiDaTavoloList, Long idGiocoInserito) throws ErrorIdNotFound {
-        GiochiDaTavolo searchById = (GiochiDaTavolo) giochiDaTavoloList.stream().filter(giochiDaTavolo -> {
-            if (giochiDaTavolo.getIdGioco().equals(idGiocoInserito)){
-                return true;
-            } else {
-                throw new  ErrorIdNotFound("Errore, id non corrispondente");
-            }
-        });
-
+        Optional<GiochiDaTavolo> searchById = giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoInserito)).findFirst();
+        if(searchById.isPresent()){
         System.out.println("| - ID: " + idGiocoInserito + " / Gioco da tavolo: " + searchById);
+        } else {
+            throw new ErrorIdNotFound("id non corrispondente");
+        }
     }
 
     public static void ricercaPerPrezzo(List<GiochiDaTavolo> giochiDaTavoloList, double prezzoInserito) {
@@ -80,15 +81,19 @@ public class GiochiDaTavolo extends CollezioniGiochi {
     }
 
     public static boolean rimozioneGioco(List<GiochiDaTavolo> giochiDaTavoloList, Long idGiocoInserito) {
-        giochiDaTavoloList.removeIf(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoInserito));
-        return true;
+        if(giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoInserito)).isParallel()) {
+            giochiDaTavoloList.removeIf(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoInserito));
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public static boolean updateGioco(List<GiochiDaTavolo> giochiDaTavoloList, Long idGiocoDaTavolo) {
+    public static boolean updateGioco(List<GiochiDaTavolo> giochiDaTavoloList, Long idGiocoDaTavolo) throws ErrorIdNotFound {
 
         Scanner scanner = new Scanner(System.in);
 
-        GiochiDaTavolo updateGiocoDaTavolo = (GiochiDaTavolo) giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoDaTavolo));
+        GiochiDaTavolo updateGiocoDaTavolo = giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoDaTavolo)).findFirst().orElseThrow(() -> new ErrorIdNotFound("id non corrispondente"));
         System.out.println("| Cosa desideri modificare ( o premere 0 per uscire dalla modifica ):");
         System.out.println("| - Titolo (1)");
         System.out.println("| - ID (2)");

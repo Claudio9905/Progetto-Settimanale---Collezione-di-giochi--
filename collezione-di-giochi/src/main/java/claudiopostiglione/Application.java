@@ -254,13 +254,17 @@ public class Application {
                     }
                     break;
                 case 5:
-                    System.out.println("| - Inserire l'id del gioco da modificare:");
-                    Long idUpdate = Long.parseLong(scanner.nextLine());
-                    boolean updateGioco = updateGioco(listaGiochiDaTavolo, idUpdate);
-                    if (updateGioco) {
-                        System.out.println("Il gioco è stato modificato");
-                    } else {
-                        System.out.println("Attenzione, impossibile modificare il gioco");
+                    try {
+                        System.out.println("| - Inserire l'id del gioco da modificare:");
+                        Long idUpdate = Long.parseLong(scanner.nextLine());
+                        boolean updateGioco = updateGioco(listaGiochiDaTavolo, idUpdate);
+                        if (updateGioco) {
+                            System.out.println("Il gioco è stato modificato");
+                        } else {
+                            System.out.println("Attenzione, impossibile modificare il gioco");
+                        }
+                    }catch (ErrorIdNotFound er){
+                        System.out.println("Error: " + er.getMessage());
                     }
                     break;
                 case 6:

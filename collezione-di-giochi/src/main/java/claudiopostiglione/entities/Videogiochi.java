@@ -60,8 +60,12 @@ public class Videogiochi extends CollezioniGiochi {
     }
 
     public static boolean elementoAggiunto(List<Videogiochi> videogiochiList, Videogiochi nuovoVideoGioco) {
-        videogiochiList.add(nuovoVideoGioco);
-        return true;
+        if(videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(nuovoVideoGioco.getIdGioco())).isParallel()) {
+            return false;
+        } else {
+            videogiochiList.add(nuovoVideoGioco);
+            return true;
+        }
     }
 
     public static void ricercaId(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
@@ -79,8 +83,13 @@ public class Videogiochi extends CollezioniGiochi {
     }
 
     public static boolean rimozioneGioco(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
-        videogiochiList.removeIf(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito));
-        return true;
+
+        if(videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito)).isParallel()) {
+            videogiochiList.removeIf(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito));
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean updateGioco(List<Videogiochi> videogiochiList, Long idGioco) {
