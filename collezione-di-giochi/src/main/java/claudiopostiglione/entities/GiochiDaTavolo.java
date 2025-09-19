@@ -1,6 +1,8 @@
 package claudiopostiglione.entities;
 
 
+import claudiopostiglione.exceptions.ErrorIdNotFound;
+
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -52,8 +54,15 @@ public class GiochiDaTavolo extends CollezioniGiochi {
         return true;
     }
 
-    public static void ricercaId(List<GiochiDaTavolo> giochiDaTavoloList, Long idGiocoInserito) {
-        GiochiDaTavolo searchById = (GiochiDaTavolo) giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getIdGioco().equals(idGiocoInserito));
+    public static void ricercaId(List<GiochiDaTavolo> giochiDaTavoloList, Long idGiocoInserito) throws ErrorIdNotFound {
+        GiochiDaTavolo searchById = (GiochiDaTavolo) giochiDaTavoloList.stream().filter(giochiDaTavolo -> {
+            if (giochiDaTavolo.getIdGioco().equals(idGiocoInserito)){
+                return true;
+            } else {
+                throw new  ErrorIdNotFound("Errore, id non corrispondente");
+            }
+        });
+
         System.out.println("| - ID: " + idGiocoInserito + " / Gioco da tavolo: " + searchById);
     }
 

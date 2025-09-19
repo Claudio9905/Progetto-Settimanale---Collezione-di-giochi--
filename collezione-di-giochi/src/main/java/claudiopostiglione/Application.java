@@ -3,6 +3,7 @@ package claudiopostiglione;
 import claudiopostiglione.entities.GenereVideoGioco;
 import claudiopostiglione.entities.GiochiDaTavolo;
 import claudiopostiglione.entities.Videogiochi;
+import claudiopostiglione.exceptions.ErrorIdNotFound;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
@@ -229,9 +230,13 @@ public class Application {
                     }
                     break;
                 case 2:
-                    System.out.println("| - Inserire l'id da cercare:");
-                    Long idInserito = Long.parseLong(scanner.nextLine());
-                    ricercaId(listaGiochiDaTavolo, idInserito);
+                    try {
+                        System.out.println("| - Inserire l'id da cercare:");
+                        Long idInserito = Long.parseLong(scanner.nextLine());
+                        ricercaId(listaGiochiDaTavolo, idInserito);
+                    } catch (ErrorIdNotFound er){
+                        System.out.println("Id del gioco non trovato");
+                    }
                     break;
                 case 3:
                     System.out.println("| - Inserire il prezzo:");
