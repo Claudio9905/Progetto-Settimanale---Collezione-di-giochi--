@@ -234,7 +234,7 @@ public class Application {
                         System.out.println("| - Inserire l'id da cercare:");
                         Long idInserito = Long.parseLong(scanner.nextLine());
                         ricercaId(listaGiochiDaTavolo, idInserito);
-                    } catch (ErrorIdNotFound er){
+                    } catch (ErrorIdNotFound er) {
                         System.out.println("Error: " + er.getMessage());
                     }
                     break;
@@ -263,7 +263,7 @@ public class Application {
                         } else {
                             System.out.println("Attenzione, impossibile modificare il gioco");
                         }
-                    }catch (ErrorIdNotFound er){
+                    } catch (ErrorIdNotFound er) {
                         System.out.println("Error: " + er.getMessage());
                     }
                     break;

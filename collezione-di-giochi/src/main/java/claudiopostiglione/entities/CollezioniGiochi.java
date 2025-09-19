@@ -9,7 +9,7 @@ public class CollezioniGiochi {
     protected String titolo;
     protected LocalDate anno_pubblicazione;
     protected double prezzo;
-
+    
     //Costruttori
     public CollezioniGiochi(Long idGioco, String titolo, LocalDate anno_pubblicazione, double prezzo) {
         this.idGioco = idGioco;
