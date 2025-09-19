@@ -2,7 +2,7 @@ package claudiopostiglione.entities;
 
 import java.time.LocalDate;
 
-public abstract class CollezioniGiochi {
+public class CollezioniGiochi {
 
     //Attributi
     protected Long idGioco;
@@ -11,7 +11,7 @@ public abstract class CollezioniGiochi {
     protected double prezzo;
 
     //Costruttori
-    CollezioniGiochi(Long idGioco, String titolo, LocalDate anno_pubblicazione, double prezzo) {
+    public CollezioniGiochi(Long idGioco, String titolo, LocalDate anno_pubblicazione, double prezzo) {
         this.idGioco = idGioco;
         this.titolo = titolo;
         this.anno_pubblicazione = anno_pubblicazione;

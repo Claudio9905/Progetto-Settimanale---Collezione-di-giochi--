@@ -1,12 +1,12 @@
 package claudiopostiglione.entities;
 
-import claudiopostiglione.interfaces.RichiesteCollezioneVideoGames;
+
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Videogiochi extends CollezioniGiochi implements RichiesteCollezioneVideoGames {
+
+public class Videogiochi extends CollezioniGiochi {
 
     //Attributi
     protected String piattaforma;
@@ -14,7 +14,7 @@ public class Videogiochi extends CollezioniGiochi implements RichiesteCollezione
     protected GenereVideoGioco genere;
 
     //Costruttori
-    Videogiochi(Long idGioco, String titolo, LocalDate anno_pubblicazione, double prezzo, String piattaforma, int durataGioco, GenereVideoGioco genere) {
+    public Videogiochi(Long idGioco, String titolo, LocalDate anno_pubblicazione, double prezzo, String piattaforma, int durataGioco, GenereVideoGioco genere) {
         super(idGioco, titolo, anno_pubblicazione, prezzo);
         this.piattaforma = piattaforma;
         this.durataGioco = durataGioco;
@@ -48,29 +48,28 @@ public class Videogiochi extends CollezioniGiochi implements RichiesteCollezione
 
     @Override
     public String toString() {
-        return "| - Videogiochi :" +
-                "Genere= " + genere +
-                ", Piattaforma= " + piattaforma + '\'' +
-                ", Durata del Gioco = " + durataGioco +
-                ", Titolo = " + titolo + '\'' +
-                ", Anno di pubblicazione = " + anno_pubblicazione +
-                ", Prezzo=" + prezzo +
+        return "| - Videogiochi: " +
+                " Genere: " + genere +
+                ", Piattaforma:  " + piattaforma +
+                ", Durata del Gioco: " + durataGioco +
+                ", Titolo: " + titolo +
+                ", Anno di pubblicazione : " + anno_pubblicazione +
+                ", Prezzo: € " + prezzo +
+                ", ID: " + idGioco +
                 " - |";
     }
 
-    @Override
-    public void elementoAggiunto(List<Videogiochi> videogiochiList, Videogiochi nuovoVideoGioco) {
+    public static boolean elementoAggiunto(List<Videogiochi> videogiochiList, Videogiochi nuovoVideoGioco) {
         videogiochiList.add(nuovoVideoGioco);
+        return true;
     }
 
-    @Override
-    public void ricercaId(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
+    public static void ricercaId(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
         Videogiochi searchById = (Videogiochi) videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito));
         System.out.println("| - ID: " + idGiocoInserito + " / Videogioco: " + searchById);
     }
 
-    @Override
-    public void ricercaPerPrezzo(List<Videogiochi> videogiochiList, double prezzoInserito) {
+    public static void ricercaPerPrezzo(List<Videogiochi> videogiochiList, double prezzoInserito) {
 
         List<Videogiochi> searchByPrice = videogiochiList.stream().filter(videogiochi -> videogiochi.getPrezzo() < prezzoInserito).toList();
         searchByPrice.forEach(videogiochi -> {
@@ -79,18 +78,16 @@ public class Videogiochi extends CollezioniGiochi implements RichiesteCollezione
         });
     }
 
-    @Override
-    public boolean rimozioneGioco(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
+    public static boolean rimozioneGioco(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
         videogiochiList.removeIf(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito));
         return true;
     }
 
-    @Override
-    public void updateGioco(List<Videogiochi> videogiochiList, Long idGioco) {
+    public static boolean updateGioco(List<Videogiochi> videogiochiList, Long idGioco) {
         Scanner scanner = new Scanner(System.in);
 
         Videogiochi updateVideogioco = (Videogiochi) videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGioco));
-        System.out.println("Cosa desideri modificare ( o premere 0 per uscire dalla modifica ):");
+        System.out.println("| Cosa desideri modificare ( o premere 0 per uscire dalla modifica ):");
         System.out.println("| - Titolo (1)");
         System.out.println("| - ID (2)");
         System.out.println("| - Anno di pubblicazione (3)");
@@ -147,10 +144,19 @@ public class Videogiochi extends CollezioniGiochi implements RichiesteCollezione
                 System.out.println("Errore, scelta inserita non valida");
         }
 
+        return true;
     }
 
-    @Override
-    public void statisticheCollezione(List<Videogiochi> videogiochiList) {
+    public static void statisticheCollezioneVideogiochi(List<Videogiochi> videogiochiList) {
+        int totaleVideogiochi = videogiochiList.size();
+        OptionalDouble maxPrezzo = videogiochiList.stream().mapToDouble(Videogiochi::getPrezzo).max();
+        OptionalDouble mediaPrezzo = videogiochiList.stream().mapToDouble(Videogiochi::getPrezzo).average();
 
+        if (maxPrezzo.isPresent() && mediaPrezzo.isPresent()) {
+            System.out.println("| Lista della collezione dei videogiochi | ------- | Totale dei videogiochi: " + totaleVideogiochi + " | Prezzo più alto: " + maxPrezzo + " | Media dei prezzi: " + mediaPrezzo);
+            videogiochiList.forEach(System.out::println);
+        } else {
+            System.out.println("La lista dei giochi dei videogiochi è vuota");
+        }
     }
 }
