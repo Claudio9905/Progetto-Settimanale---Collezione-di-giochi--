@@ -68,8 +68,8 @@ public class GiochiDaTavolo extends CollezioniGiochi {
 
     public static void ricercaPerPrezzo(List<GiochiDaTavolo> giochiDaTavoloList, double prezzoInserito) {
         List<GiochiDaTavolo> searchByPrice = giochiDaTavoloList.stream().filter(giochiDaTavolo -> giochiDaTavolo.getPrezzo() < prezzoInserito).toList();
-        searchByPrice.forEach(giochiDaTavolo -> {
             System.out.println("| ---Lista dei giochi da tavolo con prezzo inferiore a quello inserito--- |");
+        searchByPrice.forEach(giochiDaTavolo -> {
             System.out.println("| - " + giochiDaTavolo);
         });
     }

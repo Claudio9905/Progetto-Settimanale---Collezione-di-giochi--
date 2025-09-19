@@ -72,8 +72,8 @@ public class Videogiochi extends CollezioniGiochi {
     public static void ricercaPerPrezzo(List<Videogiochi> videogiochiList, double prezzoInserito) {
 
         List<Videogiochi> searchByPrice = videogiochiList.stream().filter(videogiochi -> videogiochi.getPrezzo() < prezzoInserito).toList();
-        searchByPrice.forEach(videogiochi -> {
             System.out.println("| ---Lista dei videogiochi con prezzo inferiore a quello inserito--- |");
+        searchByPrice.forEach(videogiochi -> {
             System.out.println("| - " + videogiochi);
         });
     }
