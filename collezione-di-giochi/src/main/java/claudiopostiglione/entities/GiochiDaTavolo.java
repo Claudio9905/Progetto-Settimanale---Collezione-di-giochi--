@@ -46,7 +46,7 @@ public class GiochiDaTavolo extends CollezioniGiochi {
                 ", Prezzo: € " + prezzo +
                 ", Numero dei Giocatori = " + numeroGiocatori +
                 ", Durata della partita=" + durataPartita +
-                " |";
+                "min |";
     }
 
     public static boolean elementoAggiunto(List<GiochiDaTavolo> giochiDaTavoloList, GiochiDaTavolo nuovoGiocoDaTavolo) {

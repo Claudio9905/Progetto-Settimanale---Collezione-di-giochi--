@@ -52,7 +52,7 @@ public class Videogiochi extends CollezioniGiochi {
                 " Genere: " + genere +
                 ", Piattaforma:  " + piattaforma +
                 ", Durata del Gioco: " + durataGioco +
-                ", Titolo: " + titolo +
+                " ore , Titolo: " + titolo +
                 ", Anno di pubblicazione : " + anno_pubblicazione +
                 ", Prezzo: € " + prezzo +
                 ", ID: " + idGioco +

@@ -31,7 +31,7 @@ public class Application {
             LocalDate anno = LocalDate.of(2025, 10, 10);
             double price = (double) Math.round(rdnNumber.nextDouble(0, 90) * 100) / 100;
             String[] listaPiattaforme = {"PC", "Xbox", "Playstation"};
-            String piattaforma = listaPiattaforme[rdnNumber.nextInt(0, 2)];
+            String piattaforma = listaPiattaforme[rdnNumber.nextInt(0, 3)];
             int durata = rdnNumber.nextInt(0, 30);
             String[] listaGeneri = {"AZIONE", "AVVENTURA", "HORROR", "STRATEGIA", "FANTASY"};
             GenereVideoGioco genere = GenereVideoGioco.valueOf(listaGeneri[rdnNumber.nextInt(0, 5)]);
@@ -235,7 +235,7 @@ public class Application {
                         Long idInserito = Long.parseLong(scanner.nextLine());
                         ricercaId(listaGiochiDaTavolo, idInserito);
                     } catch (ErrorIdNotFound er){
-                        System.out.println("Id del gioco non trovato");
+                        System.out.println("Error: " + er.getMessage());
                     }
                     break;
                 case 3:
