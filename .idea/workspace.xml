@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="80a128ee-f5da-44f9-ab57-88a6faa8ee4d" name="Changes" comment="" />
+    <list default="true" id="80a128ee-f5da-44f9-ab57-88a6faa8ee4d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collezione-di-giochi/src/main/java/claudiopostiglione/entities/GiochiDaTavolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/collezione-di-giochi/src/main/java/claudiopostiglione/entities/GiochiDaTavolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collezione-di-giochi/src/main/java/claudiopostiglione/entities/Videogiochi.java" beforeDir="false" afterPath="$PROJECT_DIR$/collezione-di-giochi/src/main/java/claudiopostiglione/entities/Videogiochi.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +17,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="32uO9j2fv2Nf82YNh18z1P26I6q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,7 +35,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/posti/OneDrive/Desktop/Corso Epicode/Epicode (Unità Back-end)/Progetti Settimanali/Progetto-Settimanale---Collezione-di-giochi--",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="TaskManager">
@@ -37,5 +49,27 @@
       <updated>1758266841375</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/collezione-di-giochi/src/main/java/claudiopostiglione/entities/CollezioniGiochi.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

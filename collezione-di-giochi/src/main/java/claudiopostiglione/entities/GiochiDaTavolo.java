@@ -157,7 +157,7 @@ public class GiochiDaTavolo extends CollezioniGiochi {
             System.out.println("| Lista della collezione dei videogiochi | ------- | Totale dei videogiochi: " + totaleGiochiDaTavolo + " | Prezzo più alto: " + maxPrezzo + " | Media dei prezzi: " + mediaPrezzo);
             giochiDaTavoloList.forEach(System.out::println);
         } else {
-            System.out.println("La lista dei giochi dei videogiochi è vuota");
+            System.out.println("La lista dei giochi da tavolo è vuota");
         }
     }
 }

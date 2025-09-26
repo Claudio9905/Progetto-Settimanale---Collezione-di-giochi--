@@ -68,9 +68,14 @@ public class Videogiochi extends CollezioniGiochi {
         }
     }
 
-    public static void ricercaId(List<Videogiochi> videogiochiList, Long idGiocoInserito) {
-        Videogiochi searchById = (Videogiochi) videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito));
+    public static void ricercaId(List<Videogiochi> videogiochiList, Long idGiocoInserito) throws ErrorIdNotFound {
+        Optional<Videogiochi> searchById = videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGiocoInserito)).findFirst();
+        if(searchById.isPresent()){
         System.out.println("| - ID: " + idGiocoInserito + " / Videogioco: " + searchById);
+        } else {
+            throw new ErrorIdNotFound("id non corrispondente");
+        }
+
     }
 
     public static void ricercaPerPrezzo(List<Videogiochi> videogiochiList, double prezzoInserito) {
@@ -95,7 +100,7 @@ public class Videogiochi extends CollezioniGiochi {
     public static boolean updateGioco(List<Videogiochi> videogiochiList, Long idGioco) {
         Scanner scanner = new Scanner(System.in);
 
-        Videogiochi updateVideogioco = (Videogiochi) videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGioco));
+        Videogiochi updateVideogioco = videogiochiList.stream().filter(videogiochi -> videogiochi.getIdGioco().equals(idGioco)).findFirst().orElseThrow(() -> new ErrorIdNotFound("id non corrispondente"));
         System.out.println("| Cosa desideri modificare ( o premere 0 per uscire dalla modifica ):");
         System.out.println("| - Titolo (1)");
         System.out.println("| - ID (2)");
@@ -165,7 +170,7 @@ public class Videogiochi extends CollezioniGiochi {
             System.out.println("| Lista della collezione dei videogiochi | ------- | Totale dei videogiochi: " + totaleVideogiochi + " | Prezzo più alto: " + maxPrezzo + " | Media dei prezzi: " + mediaPrezzo);
             videogiochiList.forEach(System.out::println);
         } else {
-            System.out.println("La lista dei giochi dei videogiochi è vuota");
+            System.out.println("La lista dei videogiochi è vuota");
         }
     }
 }
